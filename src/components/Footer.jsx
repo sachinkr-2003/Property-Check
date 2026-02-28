@@ -5,7 +5,7 @@ import { settingsAPI } from '../services/apiService';
 
 const Footer = () => {
   const [settings, setSettings] = useState({
-    siteTitle: 'Gorakhpur Property Check',
+    siteTitle: 'Gorakhpur Property Check ',
     contactEmail: 'info@gorakhpurpropertycheck.com',
     contactPhone: '+91 9693420595',
     address: 'Third Floor, Yashodhara Complex, Near PSC Camp, Gorakhpur'
