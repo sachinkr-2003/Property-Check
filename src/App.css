@@ -1,0 +1,228 @@
+/* Gorakhpur Property Check - Professional Classical Theme */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background: #f8f9fa;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+.App {
+  will-change: contents;
+  transform: translateZ(0);
+}
+
+.main-content {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+img {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Classical Professional Gradients */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%) !important;
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, #1e3c72, #7e22ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(45deg, #f7971e, #ffd200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Professional Shadows */
+.shadow-custom {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12) !important;
+}
+
+.shadow-elegant {
+  box-shadow: 0 15px 50px rgba(30, 60, 114, 0.15) !important;
+}
+
+.shadow-hover {
+  transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(30, 60, 114, 0.2) !important;
+}
+
+/* Classical Card Styles */
+.card-classical {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.card-classical:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* Professional Buttons */
+.btn-classical {
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-classical-primary {
+  background: linear-gradient(135deg, #1e3c72, #7e22ce);
+  color: white;
+}
+
+.btn-classical-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(30, 60, 114, 0.3);
+}
+
+.btn-classical-gold {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  color: #2c3e50;
+}
+
+.btn-classical-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(247, 151, 30, 0.4);
+}
+
+/* Elegant Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Professional Typography */
+.heading-classical {
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.text-elegant {
+  color: #5a6c7d;
+  line-height: 1.8;
+}
+
+/* Decorative Elements */
+.divider-classical {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e3c72, #7e22ce);
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.badge-classical {
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heading-classical {
+    font-size: 1.8rem !important;
+  }
+  
+  .btn-classical {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}
