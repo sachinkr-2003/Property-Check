@@ -9,6 +9,7 @@ const Navbar = () => {
     { id: 'home', label: 'Home', path: '/' },
     { id: 'about', label: 'About', path: '/about' },
     { id: 'services', label: 'Services', path: '/services' },
+    { id: 'team', label: 'Team', path: '/team' },
     { id: 'contact', label: 'Contact', path: '/contact' }
   ];
 
