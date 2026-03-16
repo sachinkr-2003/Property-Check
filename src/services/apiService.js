@@ -4,9 +4,11 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 const apiCall = async (endpoint, options = {}) => {
   const token = localStorage.getItem('adminToken');
 
+  const isFormData = options.body instanceof FormData;
+
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
       ...(token && { Authorization: `Bearer ${token}` }),
       ...options.headers
     },
@@ -44,9 +46,22 @@ export const authAPI = {
 export const propertyAPI = {
   getAll: () => apiCall('/properties'),
 
-  create: (propertyData) => apiCall('/properties', {
+  create: (propertyData) => {
+    // Use FormData so multer can parse it (even without files)
+    const formData = new FormData();
+    Object.entries(propertyData).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) formData.append(key, value);
+    });
+    return apiCall('/properties', {
+      method: 'POST',
+      body: formData,
+      headers: {} // Let browser set Content-Type with boundary
+    });
+  },
+
+  createContact: (contactData) => apiCall('/contact', {
     method: 'POST',
-    body: JSON.stringify(propertyData)
+    body: JSON.stringify(contactData)
   }),
 
   getById: (id) => apiCall(`/properties/${id}`),
