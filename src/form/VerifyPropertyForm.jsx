@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { propertyAPI, settingsAPI } from '../services/apiService';
+import Swal from 'sweetalert2';
 
 const VerifyPropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -61,9 +62,30 @@ const VerifyPropertyForm = () => {
         serviceType: 'Basic'
       });
 
-      // Show success message
-      alert(`Request submitted successfully! Request ID: #${response.data._id}`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Request Submitted! 🎉',
+        html: `
+          <p>Dear <strong>${formData.name}</strong>, your property verification request has been received!</p>
+          <div style="background:#f8f9fa;padding:12px;border-radius:8px;margin-top:10px;text-align:left">
+            <p style="margin:4px 0"><b>Request ID:</b> #${response.data._id}</p>
+            <p style="margin:4px 0"><b>Service:</b> ${formData.serviceType}</p>
+            <p style="margin:4px 0"><b>Amount:</b> ₹${getServicePrice(formData.serviceType).toLocaleString()}</p>
+          </div>
+          <p style="margin-top:10px">Our team will contact you within <strong>24 hours</strong>.</p>
+        `,
+        confirmButtonText: 'Okay, Got it!',
+        confirmButtonColor: '#667eea',
+        showClass: { popup: 'animate__animated animate__fadeInDown' },
+        hideClass: { popup: 'animate__animated animate__fadeOutUp' }
+      });
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Submission Failed!',
+        text: err.message || 'Failed to submit request. Please try again.',
+        confirmButtonColor: '#667eea'
+      });
       setError(err.message || 'Failed to submit request');
     } finally {
       setLoading(false);

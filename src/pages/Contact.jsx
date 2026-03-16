@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { settingsAPI, propertyAPI } from '../services/apiService';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
@@ -10,8 +11,6 @@ const Contact = () => {
     whatsappNumber: '919693420595'
   });
   const [loading, setLoading] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     settingsAPI.get().then(res => { if (res.success) setSettings(res.data); }).catch(() => {});
@@ -22,14 +21,26 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSubmitError('');
-    setSubmitSuccess(false);
     try {
       await propertyAPI.createContact(formData);
-      setSubmitSuccess(true);
       setFormData({ name: '', phone: '', email: '', message: '' });
+      Swal.fire({
+        icon: 'success',
+        title: 'Message Sent! 🎉',
+        html: `<p>Thank you <strong>${formData.name}</strong>!<br/>We will contact you within <strong>24 hours</strong>.</p>`,
+        confirmButtonText: 'Great!',
+        confirmButtonColor: '#667eea',
+        background: '#fff',
+        showClass: { popup: 'animate__animated animate__fadeInDown' },
+        hideClass: { popup: 'animate__animated animate__fadeOutUp' }
+      });
     } catch (err) {
-      setSubmitError(err.message || 'Failed to send message. Please try again.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: err.message || 'Failed to send message. Please try again.',
+        confirmButtonColor: '#667eea'
+      });
     } finally {
       setLoading(false);
     }
@@ -103,8 +114,6 @@ const Contact = () => {
                 <p className="mb-0 text-white-50">Fill out the form below and we'll get back to you within 24 hours</p>
               </div>
               <div className="card-body p-5">
-                {submitSuccess && <div className="alert alert-success"><i className="fas fa-check-circle me-2"></i>Message sent successfully! We will contact you within 24 hours.</div>}
-                {submitError && <div className="alert alert-danger"><i className="fas fa-exclamation-circle me-2"></i>{submitError}</div>}
                 <form onSubmit={handleSubmit}>
                   <div className="row g-4">
                     <div className="col-md-6">
