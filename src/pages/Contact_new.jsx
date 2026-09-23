@@ -47,7 +47,7 @@ const Contact = () => {
       </style>
       
       {/* Hero Section */}
-      <div className="classical-bg text-white py-5">
+      <div className="classical-bg text-gray-900 dark:text-white py-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center fade-in-up">
@@ -77,7 +77,7 @@ const Contact = () => {
               <div className="card-body p-4">
                 <div className="text-center mb-4">
                   <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '80px', height: '80px' }}>
-                    <span className="text-white" style={{ fontSize: '2rem' }}>👨💼</span>
+                    <span className="text-gray-900 dark:text-white" style={{ fontSize: '2rem' }}>👨💼</span>
                   </div>
                   <h4 className="fw-bold mb-1">Arun Singh</h4>
                   <p className="text-muted mb-0">Founder & Property Verification Expert</p>
@@ -89,7 +89,7 @@ const Contact = () => {
                 <div className="contact-info">
                   <div className="d-flex align-items-center mb-4 p-3 bg-light rounded">
                     <div className="bg-primary rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                      <span className="text-white">📞</span>
+                      <span className="text-gray-900 dark:text-white">📞</span>
                     </div>
                     <div>
                       <small className="text-muted d-block fw-semibold">Phone Number</small>
@@ -99,7 +99,7 @@ const Contact = () => {
                   
                   <div className="d-flex align-items-center mb-4 p-3 bg-light rounded">
                     <div className="bg-success rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                      <span className="text-white">✉️</span>
+                      <span className="text-gray-900 dark:text-white">✉️</span>
                     </div>
                     <div>
                       <small className="text-muted d-block fw-semibold">Email Address</small>
@@ -119,7 +119,7 @@ const Contact = () => {
                   
                   <div className="d-flex align-items-center p-3 bg-light rounded">
                     <div className="bg-info rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                      <span className="text-white">🕒</span>
+                      <span className="text-gray-900 dark:text-white">🕒</span>
                     </div>
                     <div>
                       <small className="text-muted d-block fw-semibold">Working Hours</small>
@@ -150,7 +150,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="col-lg-8 fade-in-up" style={{animationDelay: '0.3s'}}>
             <div className="card border-0 shadow-lg">
-              <div className="card-header classical-bg text-white text-center py-4">
+              <div className="card-header classical-bg text-gray-900 dark:text-white text-center py-4">
                 <h3 className="mb-2 fw-bold">📝 Send Us a Message</h3>
                 <p className="mb-0 text-white-50">Fill out the form below and we'll get back to you within 24 hours</p>
               </div>

@@ -13,79 +13,39 @@ const AdminSidebar = ({ activeTab, setActiveTab, onLogout }) => {
     ];
 
     return (
-        <div className="admin-sidebar shadow-lg" style={{
-            width: '280px',
-            background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)',
-            minHeight: '100vh',
-            borderRight: '1px solid rgba(255,255,255,0.1)',
-            position: 'sticky',
-            top: 0
-        }}>
-            <style>
-                {`
-                    .nav-item-premium {
-                        transition: all 0.3s ease;
-                        border-radius: 12px;
-                        margin: 4px 15px;
-                        padding: 12px 18px;
-                        color: rgba(255,255,255,0.7);
-                        text-decoration: none;
-                        display: flex;
-                        align-items: center;
-                        cursor: pointer;
-                        border: none;
-                        background: transparent;
-                        width: calc(100% - 30px);
-                    }
-                    .nav-item-premium:hover {
-                        background: rgba(255,255,255,0.05);
-                        color: #fff;
-                        transform: translateX(5px);
-                    }
-                    .nav-item-premium.active {
-                        background: linear-gradient(45deg, #667eea, #764ba2);
-                        color: #fff;
-                        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-                    }
-                    .admin-logo-box {
-                        padding: 30px 20px;
-                        margin-bottom: 20px;
-                        border-bottom: 1px solid rgba(255,255,255,0.05);
-                    }
-                `}
-            </style>
-
-            <div className="admin-logo-box text-center">
-                <div className="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style={{ width: '45px', height: '45px' }}>
-                    <i className="fas fa-shield-alt text-dark fs-5"></i>
+        <div className="w-64 shrink-0 bg-brand-dark border-r border-gray-800 flex flex-col h-screen sticky top-0 text-gray-300 font-sans shadow-lg">
+            <div className="py-4 px-6 border-b border-gray-800 text-center flex-shrink-0 bg-black/20">
+                <div className="w-10 h-10 bg-white rounded-none mx-auto flex items-center justify-center mb-2 shadow-sm">
+                    <i className="fas fa-shield-alt text-brand-dark text-lg"></i>
                 </div>
-                <h5 className="mb-0 fw-bold text-white tracking-wider">GPC ADMIN</h5>
-                <small className="text-muted text-uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>Management Suite</small>
+                <h1 className="text-white font-bold tracking-widest text-[14px] m-0 uppercase">GPC Admin</h1>
             </div>
 
-            <div className="nav flex-column mt-2">
+            <nav className="flex-1 overflow-y-auto hide-scroll py-3">
                 {menuItems.map(item => (
                     <button
                         key={item.id}
-                        className={`nav-item-premium ${activeTab === item.id ? 'active' : ''}`}
                         onClick={() => setActiveTab(item.id)}
+                        className={`w-full flex items-center px-6 py-[14px] text-[15px] tracking-wide font-medium transition-colors border-l-[3px] rounded-none ${
+                            activeTab === item.id 
+                            ? 'bg-black/30 border-brand-accent text-white' 
+                            : 'border-transparent hover:bg-white/5 hover:text-white'
+                        }`}
                     >
-                        <i className={`${item.icon} me-3`} style={{ width: '20px' }}></i>
-                        <span className="fw-medium">{item.label}</span>
+                        <i className={`${item.icon} w-8 text-left text-base opacity-90`}></i>
+                        <span>{item.label}</span>
                     </button>
                 ))}
+            </nav>
 
-                <div className="mt-auto pb-4">
-                    <hr className="mx-4 my-4 opacity-10" />
-                    <button
-                        className="nav-item-premium text-danger hover-bg-danger mt-auto"
-                        onClick={onLogout}
-                        style={{ border: 'none' }}
-                    >
-                        <i className="fas fa-sign-out-alt me-3" style={{ width: '20px' }}></i>
-                        <span className="fw-medium">Sign Out</span>
-                    </button>
-                </div>
+            <div className="p-3 border-t border-gray-800 flex-shrink-0 bg-black/10">
+                <button
+                    onClick={onLogout}
+                    className="w-full flex items-center px-5 py-3 text-[15px] font-bold text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors rounded-none"
+                >
+                    <i className="fas fa-sign-out-alt w-8 text-left text-base opacity-90"></i>
+                    <span>Sign Out</span>
+                </button>
             </div>
         </div>
     );

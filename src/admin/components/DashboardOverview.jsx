@@ -1,141 +1,134 @@
 import React from 'react';
 
 const DashboardOverview = ({ inquiries = [], stats = {} }) => {
+    const statCards = [
+        { label: 'Total Requests', value: inquiries.length, icon: 'fas fa-clipboard-list', color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-200' },
+        { label: 'Pending', value: stats.pendingVerifications || 0, icon: 'fas fa-clock', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' },
+        { label: 'Completed', value: stats.completedVerifications || 0, icon: 'fas fa-check-double', color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-200' },
+        { label: 'Revenue', value: `₹${(stats.monthlyRevenue || 0).toLocaleString()}`, icon: 'fas fa-wallet', color: 'text-purple-600', bg: 'bg-purple-50', border: 'border-purple-200' }
+    ];
+
     return (
-        <div className="fade-in">
-            <div className="d-flex justify-content-between align-items-end mb-4">
+        <div className="font-sans animate-[fadeIn_0.3s_ease-out]">
+            {/* Header Area */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
                 <div>
-                    <h2 className="fw-bold text-dark mb-1">Dashboard Overview</h2>
-                    <p className="text-muted mb-0">Welcome back, Admin. Here's what's happening today.</p>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Dashboard Overview</h2>
+                    <p className="text-gray-500 text-sm">Welcome back, Admin. Here's what's happening today.</p>
                 </div>
-                <div className="bg-white px-3 py-2 rounded-3 shadow-sm border small fw-bold text-muted">
-                    <i className="fas fa-calendar-alt me-2 text-primary"></i>
+                <div className="bg-white dark:bg-gray-800 px-4 py-2 text-sm font-bold border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 rounded-none shadow-sm flex items-center gap-2">
+                    <i className="fas fa-calendar-alt text-brand-dark dark:text-brand-accent"></i>
                     {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </div>
             </div>
 
-            <div className="row g-4 mb-5">
-                {[
-                    { label: 'Total Requests', value: inquiries.length, icon: 'fas fa-clipboard-list', color: '#667eea', trend: '+12%' },
-                    { label: 'Pending', value: stats.pendingVerifications || 0, icon: 'fas fa-clock', color: '#f39c12', trend: '-2%' },
-                    { label: 'Completed', value: stats.completedVerifications || 0, icon: 'fas fa-check-double', color: '#27ae60', trend: '+5%' },
-                    { label: 'Revenue', value: `₹${(stats.monthlyRevenue || 0).toLocaleString()}`, icon: 'fas fa-wallet', color: '#3498db', trend: '+8%' }
-                ].map((item, idx) => (
-                    <div className="col-md-3" key={idx}>
-                        <div className="card border-0 shadow-sm p-3 h-100" style={{ borderRadius: '20px' }}>
-                            <div className="d-flex justify-content-between align-items-start mb-3">
-                                <div className="rounded-circle d-flex align-items-center justify-content-center" style={{ width: '45px', height: '45px', background: `${item.color}15`, color: item.color }}>
-                                    <i className={`${item.icon} fs-5`}></i>
-                                </div>
-                                <span className={`badge rounded-pill ${item.trend.startsWith('+') ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'}`} style={{ fontSize: '11px' }}>
-                                    {item.trend} <i className={`fas fa-caret-${item.trend.startsWith('+') ? 'up' : 'down'} ms-1`}></i>
-                                </span>
-                            </div>
-                            <h3 className="fw-bold mb-0">{item.value}</h3>
-                            <small className="text-muted fw-medium">{item.label}</small>
+            {/* Stat Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {statCards.map((item, idx) => (
+                    <div key={idx} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm p-4 rounded-none flex justify-between items-center">
+                        <div>
+                            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-0 leading-none">{item.value}</h3>
+                            <p className="text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-0 mt-1">{item.label}</p>
+                        </div>
+                        <div className={`w-10 h-10 flex items-center justify-center rounded-none ${item.bg} dark:bg-gray-700 border ${item.border} dark:border-gray-600`}>
+                            <i className={`${item.icon} text-base ${item.color} dark:text-gray-100`}></i>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="row g-4">
-                <div className="col-lg-8">
-                    <div className="card border-0 shadow-sm overflow-hidden" style={{ borderRadius: '25px' }}>
-                        <div className="card-header bg-white py-4 px-4 border-0 d-flex justify-content-between align-items-center">
-                            <h5 className="mb-0 fw-bold text-dark">Recent Activity</h5>
-                            <button className="btn btn-light btn-sm rounded-pill px-3">View All</button>
-                        </div>
-                        <div className="card-body p-0">
-                            <div className="table-responsive">
-                                <table className="table table-hover align-middle mb-0">
-                                    <thead className="bg-light">
-                                        <tr>
-                                            <th className="px-4 py-3 border-0 small text-uppercase text-muted fw-bold">Client</th>
-                                            <th className="py-3 border-0 small text-uppercase text-muted fw-bold">Service</th>
-                                            <th className="py-3 border-0 small text-uppercase text-muted fw-bold">Status</th>
-                                            <th className="py-3 border-0 small text-uppercase text-muted fw-bold">Date</th>
-                                            <th className="px-4 py-3 border-0"></th>
+            {/* Main Content Sections */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                {/* Recent Activity Table */}
+                <div className="lg:col-span-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm rounded-none">
+                    <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                        <h5 className="font-bold text-gray-900 dark:text-white mb-0 uppercase tracking-widest text-sm">Recent Activity</h5>
+                    </div>
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left border-collapse border border-gray-300 dark:border-gray-700">
+                            <thead>
+                                <tr className="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-900 dark:text-gray-200 uppercase flex-1 border border-gray-300 dark:border-gray-700 border-b-2">Client</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-900 dark:text-gray-200 uppercase flex-1 border border-gray-300 dark:border-gray-700 border-b-2">Service</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-900 dark:text-gray-200 uppercase flex-1 border border-gray-300 dark:border-gray-700 border-b-2">Status</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-900 dark:text-gray-200 uppercase flex-1 border border-gray-300 dark:border-gray-700 border-b-2">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {inquiries.length > 0 ? inquiries.slice(0, 6).map((inquiry, idx) => {
+                                    const name = inquiry.name || (inquiry.user && inquiry.user.name) || 'Anonymous';
+                                    const phone = inquiry.phone || (inquiry.user && inquiry.user.phone) || 'N/A';
+                                    return (
+                                        <tr key={idx} className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                            <td className="px-4 py-3 text-sm border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
+                                                <div className="font-bold">{name}</div>
+                                                <div className="text-gray-500 text-xs">{phone}</div>
+                                            </td>
+                                            <td className="px-4 py-3 text-sm font-medium border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300">
+                                                {inquiry.serviceType || 'Standard'}
+                                            </td>
+                                            <td className="px-4 py-3 text-sm border border-gray-300 dark:border-gray-700 font-bold uppercase tracking-wider">
+                                                {inquiry.status === 'Completed' ? (
+                                                    <span className="text-emerald-600 dark:text-emerald-400">Completed</span>
+                                                ) : inquiry.status === 'In Progress' ? (
+                                                    <span className="text-amber-600 dark:text-amber-400">In Progress</span>
+                                                ) : (
+                                                    <span className="text-gray-600 dark:text-gray-400">{inquiry.status || 'Pending'}</span>
+                                                )}
+                                            </td>
+                                            <td className="px-4 py-3 text-sm border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 font-mono">
+                                                {new Date(inquiry.createdAt || Date.now()).toLocaleDateString()}
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {inquiries.length > 0 ? inquiries.slice(0, 6).map((inquiry, idx) => {
-                                            const name = inquiry.name || (inquiry.user && inquiry.user.name) || 'Anonymous';
-                                            const phone = inquiry.phone || (inquiry.user && inquiry.user.phone) || 'N/A';
-                                            return (
-                                                <tr key={idx}>
-                                                    <td className="px-4 py-4">
-                                                        <div className="d-flex align-items-center">
-                                                            <div className="bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style={{ width: '40px', height: '40px', fontSize: '14px' }}>
-                                                                {name.charAt(0)}
-                                                            </div>
-                                                            <div>
-                                                                <div className="fw-bold text-dark">{name}</div>
-                                                                <small className="text-muted">{phone}</small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="py-4">
-                                                        <span className="text-dark fw-medium small">{inquiry.serviceType || 'Standard'}</span>
-                                                    </td>
-                                                    <td className="py-4">
-                                                        <span className={`badge rounded-pill px-3 py-2 ${inquiry.status === 'Completed' ? 'bg-success-subtle text-success' :
-                                                            inquiry.status === 'In Progress' ? 'bg-warning-subtle text-warning' :
-                                                                'bg-secondary-subtle text-secondary'
-                                                            }`} style={{ fontSize: '11px' }}>
-                                                            {inquiry.status || 'Pending'}
-                                                        </span>
-                                                    </td>
-                                                    <td className="py-4 text-muted small">{new Date(inquiry.createdAt || Date.now()).toLocaleDateString()}</td>
-                                                    <td className="px-4 py-4 text-end">
-                                                        <button className="btn btn-link link-primary p-0"><i className="fas fa-chevron-right"></i></button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        }) : (
-                                            <tr>
-                                                <td colSpan="5" className="text-center py-5 text-muted">
-                                                    <i className="fas fa-inbox fs-1 mb-3 opacity-25"></i>
-                                                    <h5>No recent requests found</h5>
-                                                </td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
+                                    );
+                                }) : (
+                                    <tr>
+                                        <td colSpan="4" className="text-center py-12 text-gray-500 dark:text-gray-400">
+                                            <i className="fas fa-inbox text-4xl mb-4 opacity-50 block"></i>
+                                            <p className="font-medium">No recent requests found</p>
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Quick Stats Sidebar Panel */}
+                <div className="bg-gray-900 overflow-hidden border border-gray-800 rounded-none shadow-sm h-full flex flex-col">
+                    <div className="p-6 border-b border-gray-800">
+                        <h5 className="font-bold text-white uppercase tracking-widest text-sm mb-0">System Metrics</h5>
+                    </div>
+                    <div className="p-6 flex-1 text-white">
+                        <div className="mb-8">
+                            <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+                                <span>Verification Efficiency</span>
+                                <span className="text-white">85%</span>
                             </div>
+                            <div className="w-full h-2 bg-gray-800 relative rounded-none">
+                                <div className="absolute top-0 left-0 h-full bg-brand-accent w-[85%]"></div>
+                            </div>
+                        </div>
+                        
+                        <div className="mb-8">
+                            <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+                                <span>Client Satisfaction</span>
+                                <span className="text-white">98%</span>
+                            </div>
+                            <div className="w-full h-2 bg-gray-800 relative rounded-none">
+                                <div className="absolute top-0 left-0 h-full bg-emerald-500 w-[98%]"></div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 p-5 bg-gray-800 border border-gray-700 rounded-none">
+                            <i className="fas fa-lightbulb text-brand-accent text-xl mb-3 block"></i>
+                            <h6 className="font-bold text-white mb-1 uppercase text-xs tracking-wider">Pro Tip</h6>
+                            <p className="text-xs text-gray-400 leading-relaxed m-0">Ensure that service prices in Site Settings always reflect current local market changes for maximum conversion.</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-lg-4">
-                    <div className="card border-0 shadow-sm h-100" style={{ borderRadius: '25px', background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)' }}>
-                        <div className="card-body p-4 text-white">
-                            <h5 className="fw-bold mb-4">Quick Stats</h5>
-                            <div className="mb-4">
-                                <div className="d-flex justify-content-between mb-2 small">
-                                    <span>Verification Efficiency</span>
-                                    <span>85%</span>
-                                </div>
-                                <div className="progress" style={{ height: '6px', backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                                    <div className="progress-bar bg-warning" role="progressbar" style={{ width: '85%' }}></div>
-                                </div>
-                            </div>
-                            <div className="mb-4">
-                                <div className="d-flex justify-content-between mb-2 small">
-                                    <span>Client Satisfaction</span>
-                                    <span>98%</span>
-                                </div>
-                                <div className="progress" style={{ height: '6px', backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                                    <div className="progress-bar bg-success" role="progressbar" style={{ width: '98%' }}></div>
-                                </div>
-                            </div>
-                            <div className="mt-5 p-4 rounded-4" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                <i className="fas fa-lightbulb text-warning mb-3 fs-4"></i>
-                                <h6 className="fw-bold">Pro Tip:</h6>
-                                <p className="small mb-0 opacity-75">Update service prices in Site Settings to reflect market changes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

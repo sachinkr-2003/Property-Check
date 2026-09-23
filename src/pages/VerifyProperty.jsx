@@ -3,138 +3,82 @@ import VerifyPropertyForm from '../form/VerifyPropertyForm';
 
 const VerifyProperty = () => {
   return (
-    <div className="verify-property-page" style={{
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      minHeight: '100vh'
-    }}>
-      <style>
-        {`
-          @keyframes slideUpFromBottom {
-            0% {
-              opacity: 0;
-              transform: translateY(100px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          @keyframes slideUpStagger {
-            0% {
-              opacity: 0;
-              transform: translateY(80px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .slide-up {
-            animation: slideUpFromBottom 0.8s ease-out;
-          }
-          .slide-up-stagger {
-            animation: slideUpStagger 0.6s ease-out;
-          }
-          .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-          }
-        `}
-      </style>
-
+    <div className="min-h-screen bg-amber-50 dark:bg-brand-dark transition-colors duration-300 pb-20">
+      
       {/* Hero Section */}
-      <div className="container py-5">
-        <div className="row justify-content-center">
-          <div className="col-lg-10">
-            <div className="text-center mb-5 slide-up">
-              <div className="badge bg-warning text-dark mb-3 px-3 py-2">
-                <i className="fas fa-trophy me-2"></i> Professional Property Verification Service
-              </div>
-              <h1 className="display-3 fw-bold mb-4 text-white">
-                Verify Your <span className="text-warning">Property</span>
-              </h1>
-              <p className="lead text-white-50 mb-4">
-                Get complete property verification with 100% government record accuracy.
-                Trusted by 500+ families across Bihar.
-              </p>
-
-              {/* Trust Indicators */}
-              <div className="row g-4 mb-5">
-                <div className="col-md-4">
-                  <div className="glass-card rounded-4 p-4 h-100 slide-up-stagger" style={{ animationDelay: '0.2s' }}>
-                    <div className="text-primary mb-3">
-                      <i className="fas fa-bolt" style={{ fontSize: '2.5rem' }}></i>
-                    </div>
-                    <h5 className="fw-bold mb-2">Quick Response</h5>
-                    <p className="text-muted mb-0">Get your verification report within 1-3 days</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="glass-card rounded-4 p-4 h-100 slide-up-stagger" style={{ animationDelay: '0.4s' }}>
-                    <div className="text-success mb-3">
-                      <i className="fas fa-university" style={{ fontSize: '2.5rem' }}></i>
-                    </div>
-                    <h5 className="fw-bold mb-2">Government Records</h5>
-                    <p className="text-muted mb-0">All information from official sources</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="glass-card rounded-4 p-4 h-100 slide-up-stagger" style={{ animationDelay: '0.6s' }}>
-                    <div className="text-warning mb-3">
-                      <i className="fas fa-shield-alt" style={{ fontSize: '2.5rem' }}></i>
-                    </div>
-                    <h5 className="fw-bold mb-2">100% Secure</h5>
-                    <p className="text-muted mb-0">Your data is completely protected</p>
-                  </div>
-                </div>
-              </div>
+      <div className="bg-gradient-to-br from-[#1a2b4c] to-[#0a1128] pt-32 pb-24 text-gray-900 dark:text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <div className="mb-6">
+              <span className="inline-block bg-brand-accent text-brand-dark font-bold px-4 py-2 text-sm tracking-widest shadow-md">
+                <i className="fas fa-trophy mr-2"></i> Professional Property Verification Service
+              </span>
             </div>
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold mb-6">
+              Verify Your <span className="text-brand-accent">Property</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/70 mb-12 leading-relaxed">
+              Get complete property verification with 100% government record accuracy.
+              Trusted by 500+ families across Bihar.
+            </p>
 
-            {/* Form Section */}
-            <div className="slide-up-stagger" style={{ animationDelay: '0.8s' }}>
-              <VerifyPropertyForm />
-            </div>
-
-            {/* Process Steps */}
-            <div className="mt-5 slide-up-stagger" style={{ animationDelay: '1s' }}>
-              <div className="glass-card rounded-4 p-5">
-                <h3 className="text-center mb-4 fw-bold">Our Verification Process</h3>
-                <div className="row g-4">
-                  <div className="col-md-3 text-center">
-                    <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px' }}>
-                      <span className="fw-bold">1</span>
-                    </div>
-                    <h6 className="fw-bold">Submit Form</h6>
-                    <small className="text-muted">Fill out property details</small>
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { icon: 'fa-bolt', title: 'Quick Response', desc: 'Get your verification report within 1-3 days', color: 'text-brand-dark' },
+                { icon: 'fa-university', title: 'Government Records', desc: 'All information from official sources', color: 'text-green-500' },
+                { icon: 'fa-shield-alt', title: '100% Secure', desc: 'Your data is completely protected', color: 'text-brand-accent' }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-amber-100 dark:bg-white/5 border border-amber-200 dark:border-white/10 p-6 backdrop-blur-md shadow-lg transform hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay={idx * 150}>
+                  <div className={`${item.color} text-4xl mb-4`}>
+                    <i className={`fas ${item.icon}`}></i>
                   </div>
-                  <div className="col-md-3 text-center">
-                    <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px' }}>
-                      <span className="fw-bold">2</span>
-                    </div>
-                    <h6 className="fw-bold">Document Review</h6>
-                    <small className="text-muted">Expert analysis begins</small>
-                  </div>
-                  <div className="col-md-3 text-center">
-                    <div className="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px' }}>
-                      <span className="fw-bold">3</span>
-                    </div>
-                    <h6 className="fw-bold">Verification</h6>
-                    <small className="text-muted">Government record check</small>
-                  </div>
-                  <div className="col-md-3 text-center">
-                    <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px' }}>
-                      <span className="fw-bold">4</span>
-                    </div>
-                    <h6 className="fw-bold">Report Delivery</h6>
-                    <small className="text-muted">Detailed report sent</small>
-                  </div>
+                  <h5 className="font-bold text-gray-900 dark:text-white mb-2">{item.title}</h5>
+                  <p className="text-white/60 text-sm m-0">{item.desc}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      <div className="container mx-auto px-4 -mt-10 relative z-20">
+        <div className="max-w-5xl mx-auto" data-aos="fade-up">
+          {/* Form Section */}
+          <div className="mb-6">
+            <VerifyPropertyForm />
+          </div>
+
+          {/* Process Steps */}
+          <div className="bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 mt-6" data-aos="fade-up">
+            <div className="text-center mb-8">
+              <span className="inline-flex items-center gap-2 bg-orange-50 dark:bg-[#0a192f] border border-brand-accent/30 text-brand-accent font-bold px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase rounded-none mb-3">
+                <i className="fas fa-tasks text-brand-accent/70"></i> How It Works
+              </span>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white tracking-tight">Our Verification Process</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { step: '1', title: 'Submit Form', desc: 'Fill out property details', icon: 'fa-file-alt', color: 'text-brand-accent', border: 'border-brand-accent/40' },
+                { step: '2', title: 'Document Review', desc: 'Expert analysis begins', icon: 'fa-search', color: 'text-green-400', border: 'border-green-500/40' },
+                { step: '3', title: 'Verification', desc: 'Government record check', icon: 'fa-university', color: 'text-blue-400', border: 'border-blue-500/40' },
+                { step: '4', title: 'Report Delivery', desc: 'Detailed report sent', icon: 'fa-check-circle', color: 'text-purple-400', border: 'border-purple-500/40' }
+              ].map((item, idx) => (
+                <div key={idx} className="text-center relative group">
+                  <div className={`w-14 h-14 rounded-none flex items-center justify-center mx-auto mb-4 border-2 ${item.border} bg-orange-50 dark:bg-[#0a192f] group-hover:bg-brand-accent/10 transition-colors`}>
+                    <i className={`fas ${item.icon} ${item.color} text-xl group-hover:scale-110 transition-transform`}></i>
+                  </div>
+                  <div className={`text-[10px] font-black ${item.color} tracking-widest uppercase mb-1`}>Step {item.step}</div>
+                  <h6 className="font-black text-gray-900 dark:text-white mb-1 text-sm">{item.title}</h6>
+                  <p className="text-gray-400 text-[10px] m-0 font-semibold uppercase tracking-wider">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

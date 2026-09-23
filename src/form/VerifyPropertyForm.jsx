@@ -66,13 +66,15 @@ const VerifyPropertyForm = () => {
         icon: 'success',
         title: 'Request Submitted! 🎉',
         html: `
-          <p>Dear <strong>${formData.name}</strong>, your property verification request has been received!</p>
-          <div style="background:#f8f9fa;padding:12px;border-radius:8px;margin-top:10px;text-align:left">
-            <p style="margin:4px 0"><b>Request ID:</b> #${response.data._id}</p>
-            <p style="margin:4px 0"><b>Service:</b> ${formData.serviceType}</p>
-            <p style="margin:4px 0"><b>Amount:</b> ₹${getServicePrice(formData.serviceType).toLocaleString()}</p>
+          <div class="text-left">
+            <p>Dear <strong>${formData.name}</strong>, your property verification request has been received!</p>
+            <div class="bg-gray-50 border-l-4 border-brand-dark p-4 my-4">
+              <p class="m-1"><b>Request ID:</b> #${response.data._id}</p>
+              <p class="m-1"><b>Service:</b> ${formData.serviceType}</p>
+              <p class="m-1"><b>Amount:</b> ₹${getServicePrice(formData.serviceType).toLocaleString()}</p>
+            </div>
+            <p>Our team will contact you within <strong>24 hours</strong>.</p>
           </div>
-          <p style="margin-top:10px">Our team will contact you within <strong>24 hours</strong>.</p>
         `,
         confirmButtonText: 'Okay, Got it!',
         confirmButtonColor: '#667eea',
@@ -102,32 +104,36 @@ const VerifyPropertyForm = () => {
   };
 
   return (
-    <div className="glass-card rounded-4 p-4 p-md-5">
-      <div className="text-center mb-4">
-        <h3 className="fw-bold mb-2">Get Property Verification</h3>
-        <p className="text-muted">Fill the form below to start your property verification process</p>
+    <div className="bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 relative overflow-hidden rounded-none">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
+      
+      <div className="text-center mb-6 pb-6 border-b border-amber-200 dark:border-white/10 relative z-10">
+        <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-2 tracking-tight">Get Property Verification</h3>
+        <p className="text-brand-dark dark:text-brand-accent text-[10px] font-bold tracking-[0.15em] uppercase">Fill the form below to start verification</p>
       </div>
 
       {error && (
-        <div className="alert alert-danger" role="alert">
+        <div className="bg-red-950/40 border border-red-900/50 text-red-500 p-3 mb-5 relative z-10 font-bold text-xs uppercase tracking-widest text-center rounded-none">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="alert alert-success" role="alert">
-          Request submitted successfully! We will contact you within 24 hours.
+        <div className="bg-green-950/40 border border-green-900/50 text-green-400 p-3 mb-5 relative z-10 font-bold text-xs uppercase tracking-widest text-center rounded-none">
+          Request submitted successfully! We will contact you soon.
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="row g-3">
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Your Name *</label>
+      <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Your Name <span className="text-red-500">*</span>
+            </label>
             <input
               type="text"
               name="name"
-              className="form-control"
+              className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors rounded-none placeholder-gray-400 dark:placeholder-gray-600"
               value={formData.name}
               onChange={handleChange}
               required
@@ -135,12 +141,14 @@ const VerifyPropertyForm = () => {
             />
           </div>
 
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Phone Number *</label>
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Phone Number <span className="text-red-500">*</span>
+            </label>
             <input
               type="tel"
               name="phone"
-              className="form-control"
+              className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors rounded-none placeholder-gray-400 dark:placeholder-gray-600"
               value={formData.phone}
               onChange={handleChange}
               required
@@ -148,113 +156,127 @@ const VerifyPropertyForm = () => {
             />
           </div>
 
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Email Address</label>
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Email Address
+            </label>
             <input
               type="email"
               name="email"
-              className="form-control"
+              className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors rounded-none placeholder-gray-400 dark:placeholder-gray-600"
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email (optional)"
             />
           </div>
 
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Your Address</label>
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Your Address
+            </label>
             <input
               type="text"
               name="address"
-              className="form-control"
+              className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors rounded-none placeholder-gray-400 dark:placeholder-gray-600"
               value={formData.address}
               onChange={handleChange}
               placeholder="Your current address"
             />
           </div>
+        </div>
 
-          <div className="col-12">
-            <label className="form-label fw-semibold">Property Address *</label>
-            <textarea
-              name="propertyAddress"
-              className="form-control"
-              rows="3"
-              value={formData.propertyAddress}
-              onChange={handleChange}
-              required
-              placeholder="Enter complete property address in Gorakhpur"
-            ></textarea>
-          </div>
+        <div>
+          <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+            Property Address <span className="text-red-500">*</span>
+          </label>
+          <textarea
+            name="propertyAddress"
+            className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors resize-none rounded-none placeholder-gray-400 dark:placeholder-gray-600"
+            rows="2"
+            value={formData.propertyAddress}
+            onChange={handleChange}
+            required
+            placeholder="Enter complete property address in Gorakhpur"
+          ></textarea>
+        </div>
 
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Property Type *</label>
-            <select
-              name="propertyType"
-              className="form-select"
-              value={formData.propertyType}
-              onChange={handleChange}
-              required
-            >
-              <option value="Residential">Residential</option>
-              <option value="Commercial">Commercial</option>
-              <option value="Agricultural">Agricultural</option>
-            </select>
-          </div>
-
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">Service Type *</label>
-            <select
-              name="serviceType"
-              className="form-select"
-              value={formData.serviceType}
-              onChange={handleChange}
-              required
-            >
-              <option value="Basic">Basic Verification - ₹{pricing.basic.toLocaleString()}</option>
-              <option value="Complete">Complete Verification - ₹{pricing.complete.toLocaleString()}</option>
-              <option value="Premium">Premium Service - ₹{pricing.premium.toLocaleString()}</option>
-            </select>
-          </div>
-
-          <div className="col-12">
-            <div className="bg-light p-3 rounded">
-              <h6 className="fw-bold mb-2">Selected Service: {formData.serviceType}</h6>
-              <p className="mb-1"><strong>Amount: ₹{getServicePrice(formData.serviceType).toLocaleString()}</strong></p>
-              <small className="text-muted">
-                {formData.serviceType === 'Basic' && 'Basic document verification and legal status check'}
-                {formData.serviceType === 'Complete' && 'Complete verification with detailed report and recommendations'}
-                {formData.serviceType === 'Premium' && 'Premium service with site visit and comprehensive analysis'}
-              </small>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Property Type <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <select
+                name="propertyType"
+                className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors appearance-none rounded-none"
+                value={formData.propertyType}
+                onChange={handleChange}
+                required
+              >
+                <option value="Residential" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Residential</option>
+                <option value="Commercial" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Commercial</option>
+                <option value="Agricultural" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Agricultural</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-brand-accent">
+                <i className="fas fa-chevron-down text-[10px]"></i>
+              </div>
             </div>
           </div>
 
-          <div className="col-12">
-            <div className="d-grid">
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg"
-                disabled={loading}
+          <div>
+            <label className="block text-gray-600 dark:text-gray-300 font-bold mb-1 text-[10px] uppercase tracking-widest">
+              Service Type <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <select
+                name="serviceType"
+                className="w-full bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/10 text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors appearance-none rounded-none"
+                value={formData.serviceType}
+                onChange={handleChange}
+                required
               >
-                {loading ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2" role="status"></span>
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <i className="fas fa-paper-plane me-2"></i>
-                    Submit Verification Request
-                  </>
-                )}
-              </button>
+                <option value="Basic" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Basic Verification - ₹{pricing.basic.toLocaleString()}</option>
+                <option value="Complete" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Complete Verification - ₹{pricing.complete.toLocaleString()}</option>
+                <option value="Premium" className="bg-white dark:bg-[#0a0f1e] text-gray-900 dark:text-white">Premium Service - ₹{pricing.premium.toLocaleString()}</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-brand-accent">
+                <i className="fas fa-chevron-down text-[10px]"></i>
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="bg-orange-50 dark:bg-[#0a192f] border border-amber-200 dark:border-white/5 p-4 mt-4 rounded-none">
+          <div className="flex justify-between items-center mb-1">
+            <h6 className="font-bold text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest">Selected: {formData.serviceType}</h6>
+            <p className="font-black text-brand-accent text-lg m-0">₹{getServicePrice(formData.serviceType).toLocaleString()}</p>
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 m-0 border-t border-amber-200 dark:border-white/5 pt-2 mt-2">
+            {formData.serviceType === 'Basic' && 'Basic document verification and legal status check.'}
+            {formData.serviceType === 'Complete' && 'Complete verification with detailed report and recommendations.'}
+            {formData.serviceType === 'Premium' && 'Premium service with site visit and comprehensive analysis.'}
+          </p>
+        </div>
+
+        <div className="pt-4 mt-4 border-t border-amber-200 dark:border-white/5">
+          <button
+            type="submit"
+            className="w-full bg-brand-accent text-gray-900 hover:bg-yellow-400 border border-brand-accent px-6 py-3 font-black text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all rounded-none flex justify-center items-center gap-2 disabled:opacity-70"
+            disabled={loading}
+          >
+            {loading ? (
+              <><svg className="animate-spin h-4 w-4 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> SUBMITTING...</>
+            ) : (
+              <><i className="fas fa-check-circle"></i> SUBMIT REQUEST</>
+            )}
+          </button>
+        </div>
       </form>
 
-      <div className="text-center mt-4">
-        <small className="text-muted">
-          <i className="fas fa-shield-check me-1"></i>
-          Your information is secure and will only be used for property verification
+      <div className="text-center mt-4 relative z-10">
+        <small className="text-gray-500 font-semibold text-[9px] uppercase tracking-widest flex items-center justify-center gap-1.5">
+          <i className="fas fa-lock text-brand-accent/50 text-[10px]"></i>
+          Secure & Confidential Property Verification
         </small>
       </div>
     </div>

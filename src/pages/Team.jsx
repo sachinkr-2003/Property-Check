@@ -22,7 +22,7 @@ const Team = () => {
     {
       name: 'Priya Sharma',
       role: 'Senior Legal Advisor',
-      image: 'https://via.placeholder.com/400x450/2c3e50/ffffff?text=Priya+Sharma',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80',
       description: 'Accomplished legal professional with LLM in Property Law. Brings 8+ years of experience in property documentation, title deed verification, and legal advisory services. Expert in handling complex property disputes and registration matters.',
       expertise: ['Property Documentation', 'Title Verification', 'Legal Compliance'],
       linkedin: '#',
@@ -31,7 +31,7 @@ const Team = () => {
     {
       name: 'Rajesh Kumar',
       role: 'Chief Property Consultant',
-      image: 'https://via.placeholder.com/400x450/34495e/ffffff?text=Rajesh+Kumar',
+      image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80',
       description: 'Certified property valuation expert with 10+ years in real estate consulting. Specializes in property assessment, market analysis, and verification of land records. Known for meticulous attention to detail in property inspections.',
       expertise: ['Property Valuation', 'Market Analysis', 'Land Records'],
       linkedin: '#',
@@ -42,199 +42,122 @@ const Team = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="team-page" style={{ background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)', minHeight: '100vh' }}>
-      <style>
-        {`
-          @keyframes fadeInUp {
-            0% {
-              opacity: 0;
-              transform: translateY(50px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-          }
-          .classical-bg {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-          }
-          .team-card {
-            transition: all 0.4s ease;
-          }
-          .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
-          }
-        `}
-      </style>
-
+    <div className="min-h-screen bg-amber-50 dark:bg-brand-dark transition-colors duration-300">
+      
       {/* Hero Section */}
-      <div className="classical-bg text-white py-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center fade-in-up">
-              <div className="mb-4">
-                <span className="badge bg-warning text-dark px-3 py-2 fs-6 mb-3">
-                  <i className="fas fa-users me-2"></i> Meet Our Professionals
-                </span>
-              </div>
-              <h1 className="display-3 fw-bold mb-4">
-                Our <span className="text-warning">Expert</span> Team
-              </h1>
-              <p className="lead mb-4 text-white-50">
-                Dedicated professionals committed to ensuring secure and transparent property transactions
-              </p>
-              <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap">
-                <div className="d-flex align-items-center">
-                  <span className="text-warning me-2">✓</span>
-                  <span>3+ Years Combined Experience</span>
-                </div>
-                <div className="d-flex align-items-center">
-                  <span className="text-warning me-2">✓</span>
-                  <span>Certified Professionals</span>
-                </div>
-                <div className="d-flex align-items-center">
-                  <span className="text-warning me-2">✓</span>
-                  <span>100% Client Satisfaction</span>
-                </div>
-              </div>
-            </div>
+      <div className="bg-white dark:bg-[#0a0f1e] pt-36 md:pt-40 pb-16 text-gray-900 dark:text-white relative overflow-hidden border-b border-amber-200 dark:border-white/5">
+        {/* Background glow behind header */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10" data-aos="zoom-in">
+          <div className="mb-6">
+            <span className="inline-flex items-center gap-2 bg-orange-50 dark:bg-[#0a192f] border-2 border-brand-accent/50 text-brand-accent font-bold px-5 py-2 text-[10px] md:text-sm tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(245,158,11,0.15)] rounded-none">
+              <i className="fas fa-users text-brand-accent/70"></i> Meet Our Professionals
+            </span>
+          </div>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-yellow-200">Expert</span> Team
+          </h1>
+          <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed font-light">
+            Dedicated professionals committed to ensuring secure and transparent property transactions
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm font-semibold tracking-wider text-gray-600 dark:text-gray-300 uppercase">
+            <span className="flex items-center gap-2"><i className="fas fa-check text-brand-accent"></i> 3+ Years Experience</span>
+            <span className="flex items-center gap-2"><i className="fas fa-check text-brand-accent"></i> Certified Professionals</span>
+            <span className="flex items-center gap-2"><i className="fas fa-check text-brand-accent"></i> 100% Client Satisfaction</span>
           </div>
         </div>
       </div>
 
       {/* Team Members */}
-      <div className="container py-5">
-        <div className="row g-4 mb-5">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="col-lg-4 col-md-6 fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-              <div className="card team-card h-100 border-0 shadow-lg">
-                <div className="position-relative overflow-hidden">
-                  <img src={member.image} className="card-img-top" alt={member.name} 
-                       style={{ height: '350px', objectFit: 'cover' }} />
-                  <div className="position-absolute top-0 end-0 m-3">
-                    <span className="badge bg-warning text-dark px-3 py-2 shadow">
-                      <i className="fas fa-star me-1"></i>Expert
-                    </span>
+      <div className="py-10 md:py-14 bg-amber-50 dark:bg-brand-dark relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {teamMembers.map((member, index) => (
+              <div key={index} data-aos="fade-up" data-aos-delay={index * 150}>
+                <div className="bg-white dark:bg-[#0a0f1e] shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,158,11,0.15)] transition-all duration-300 border border-amber-200 dark:border-white/5 hover:border-brand-accent/30 h-full flex flex-col group rounded-none">
+                  {/* Image & Hover Overlay Container */}
+                  <div className="relative overflow-hidden shrink-0 h-[320px]">
+                    {/* Background image */}
+                    <img 
+                      src={member.image} 
+                      className="w-full h-full object-cover object-[center_25%] transform group-hover:scale-110 transition-transform duration-700" 
+                      alt={member.name} 
+                    />
+
+                    {/* Dark Glass Overlay on Hover */}
+                    <div className="absolute inset-0 bg-white dark:bg-[#0a0f1e]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none backdrop-blur-sm"></div>
+                    
+                    {/* Floating Expert Tag (Disappears on hover) */}
+                    <div className="absolute top-4 right-4 z-20 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                      <span className="inline-block bg-brand-accent text-white dark:text-[#0a0f1e] px-3 py-1.5 text-[10px] font-black uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.4)] rounded-none">
+                        <i className="fas fa-star me-1 text-[9px]"></i> Expert
+                      </span>
+                    </div>
+
+                    {/* BIO & EXPERTISE HOVER OVERLAY (Text) */}
+                    <div className="absolute inset-0 flex flex-col justify-center items-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none">
+                      <p className="text-gray-100 text-xs md:text-sm leading-relaxed mb-6 font-medium">
+                        "{member.description}"
+                      </p>
+                      <div className="flex flex-wrap justify-center gap-1.5">
+                        {member.expertise.map((skill, i) => (
+                          <span key={i} className="bg-brand-accent border border-brand-dark text-brand-dark px-2 py-1 text-[10px] font-black uppercase tracking-widest rounded-none shadow-md">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="card-body p-4">
-                  <h4 className="fw-bold mb-1 text-center text-dark">{member.name}</h4>
-                  <p className="text-warning fw-semibold text-center mb-3" style={{ fontSize: '1.1rem' }}>{member.role}</p>
-                  <p className="text-muted small mb-3" style={{ lineHeight: '1.7', textAlign: 'justify' }}>{member.description}</p>
                   
-                  <div className="d-flex flex-wrap justify-content-center gap-2 mb-3">
-                    {member.expertise.map((skill, i) => (
-                      <span key={i} className="badge bg-dark px-3 py-2">{skill}</span>
-                    ))}
-                  </div>
-
-                  <div className="d-flex justify-content-center gap-3 mt-3 pt-3 border-top">
-                    <a href={member.linkedin} className="btn btn-sm btn-outline-dark rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <i className="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href={`mailto:${member.email}`} className="btn btn-sm btn-outline-dark rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <i className="fas fa-envelope"></i>
-                    </a>
+                  {/* Persistent Identity Container */}
+                  <div className="flex flex-col items-center justify-center bg-orange-50 dark:bg-[#0a192f] border-t border-amber-200 dark:border-white/5 h-24 relative z-10 transition-colors duration-300">
+                    <h4 className="text-xl font-black text-gray-900 dark:text-white mb-1 group-hover:text-brand-accent transition-colors text-center">{member.name}</h4>
+                    <p className="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase text-center mb-0">{member.role}</p>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Stats Section */}
-        <div className="row g-4 mb-5">
-          <div className="col-md-3 col-6">
-            <div className="card border-0 shadow text-center p-4 h-100">
-              <h2 className="fw-bold text-primary mb-2">3+</h2>
-              <p className="text-muted mb-0">Years Experience</p>
-            </div>
-          </div>
-          <div className="col-md-3 col-6">
-            <div className="card border-0 shadow text-center p-4 h-100">
-              <h2 className="fw-bold text-success mb-2">800+</h2>
-              <p className="text-muted mb-0">Properties Verified</p>
-            </div>
-          </div>
-          <div className="col-md-3 col-6">
-            <div className="card border-0 shadow text-center p-4 h-100">
-              <h2 className="fw-bold text-warning mb-2">100%</h2>
-              <p className="text-muted mb-0">Client Satisfaction</p>
-            </div>
-          </div>
-          <div className="col-md-3 col-6">
-            <div className="card border-0 shadow text-center p-4 h-100">
-              <h2 className="fw-bold text-info mb-2">24/7</h2>
-              <p className="text-muted mb-0">Support Available</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Why Choose Section */}
-        <div className="row mt-5">
-          <div className="col-lg-10 mx-auto">
-            <div className="card border-0 shadow-lg classical-bg text-white">
-              <div className="card-body p-5">
-                <div className="text-center mb-5">
-                  <h3 className="fw-bold mb-3">Why Choose Our Team?</h3>
-                  <p className="lead text-white-50 mb-0">Professional property verification services with complete transparency</p>
-                </div>
-                <div className="row g-4">
-                  <div className="col-md-4 text-center">
-                    <div className="mb-3">
-                      <div className="bg-warning bg-opacity-20 rounded-circle d-inline-flex align-items-center justify-content-center" style={{ width: '80px', height: '80px' }}>
-                        <i className="fas fa-certificate" style={{ fontSize: '2.5rem' }}></i>
-                      </div>
-                    </div>
-                    <h5 className="text-warning fw-bold mb-2">Certified Professionals</h5>
-                    <p className="text-white-50 small">All team members hold relevant certifications and licenses in their respective fields</p>
-                  </div>
-                  <div className="col-md-4 text-center">
-                    <div className="mb-3">
-                      <div className="bg-warning bg-opacity-20 rounded-circle d-inline-flex align-items-center justify-content-center" style={{ width: '80px', height: '80px' }}>
-                        <i className="fas fa-shield-alt" style={{ fontSize: '2.5rem' }}></i>
-                      </div>
-                    </div>
-                    <h5 className="text-warning fw-bold mb-2">Trusted Expertise</h5>
-                    <p className="text-white-50 small">Combined experience of 30+ years in property verification and legal services</p>
-                  </div>
-                  <div className="col-md-4 text-center">
-                    <div className="mb-3">
-                      <div className="bg-warning bg-opacity-20 rounded-circle d-inline-flex align-items-center justify-content-center" style={{ width: '80px', height: '80px' }}>
-                        <i className="fas fa-handshake" style={{ fontSize: '2.5rem' }}></i>
-                      </div>
-                    </div>
-                    <h5 className="text-warning fw-bold mb-2">Client-Focused</h5>
-                    <p className="text-white-50 small">Dedicated to providing transparent, reliable, and efficient property solutions</p>
-                  </div>
-                </div>
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12" data-aos="fade-up">
+            {[
+              { value: '3+', label: 'Years Experience', color: 'text-brand-accent' },
+              { value: '800+', label: 'Properties Verified', color: 'text-white' },
+              { value: '100%', label: 'Client Satisfaction', color: 'text-brand-accent' },
+              { value: '24/7', label: 'Support Available', color: 'text-white' }
+            ].map((stat, idx) => (
+              <div key={idx} className="bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/5 p-6 md:p-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-brand-accent/30 hover:-translate-y-1 transition-all rounded-none group">
+                <h2 className={`text-3xl md:text-4xl font-black mb-2 ${stat.color} group-hover:scale-110 transition-transform`}>{stat.value}</h2>
+                <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-0">{stat.label}</p>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
 
-        {/* CTA Section */}
-        <div className="row mt-5">
-          <div className="col-lg-8 mx-auto">
-            <div className="card border-0 shadow-lg classical-bg text-white">
-              <div className="card-body p-5 text-center">
-                <h3 className="fw-bold mb-3">Ready to Work With Us?</h3>
-                <p className="mb-4 text-white-50">Get in touch with our expert team for all your property verification needs</p>
-                <div className="d-flex gap-3 justify-content-center flex-wrap">
-                  <a href="/contact" className="btn btn-warning btn-lg px-5 fw-bold">
-                    <i className="fas fa-phone me-2"></i>Contact Us
+          {/* CTA Section */}
+          <div data-aos="zoom-in" className="max-w-4xl mx-auto mb-8">
+            <div className="bg-white dark:bg-[#0a0f1e] border border-amber-200 dark:border-white/5 text-gray-900 dark:text-white p-8 md:p-12 text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden rounded-none">
+              <div className="absolute top-0 left-0 w-48 h-48 bg-brand-accent/5 rounded-full blur-[80px] transform -translate-x-1/4 -translate-y-1/4 pointer-events-none"></div>
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-widest">Ready to Work With Us?</h3>
+                <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mb-8 max-w-lg mx-auto font-light">
+                  Get in touch with our expert team for all your property verification needs in Gorakhpur
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href="/contact" className="bg-brand-accent text-white dark:text-[#0a0f1e] hover:bg-yellow-400 px-6 py-3 font-black text-sm uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)] rounded-none flex items-center justify-center">
+                    <i className="fas fa-phone mr-3"></i> Contact Us
                   </a>
-                  <a href="/verify" className="btn btn-outline-light btn-lg px-5 fw-bold">
-                    <i className="fas fa-check-circle me-2"></i>Verify Property
+                  <a href="/verify" className="border border-amber-300 dark:border-white/20 text-gray-900 dark:text-white hover:border-brand-accent/50 hover:text-brand-accent px-6 py-3 font-bold text-sm uppercase tracking-widest transition-all rounded-none flex items-center justify-center">
+                    <i className="fas fa-check-circle mr-3"></i> Verify Property
                   </a>
                 </div>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>

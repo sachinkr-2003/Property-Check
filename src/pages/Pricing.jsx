@@ -25,102 +25,126 @@ const Pricing = () => {
   }, []);
 
   return (
-    <div className="container-fluid bg-light min-vh-100 py-5">
-      <div className="container">
-        <h1 className="display-4 fw-bold text-center mb-5 text-gradient">Pricing Plans</h1>
+    <div className="min-h-screen bg-amber-50 dark:bg-brand-dark pt-32 pb-24 transition-colors duration-300">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-20" data-aos="fade-up">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand-accent dark:from-white dark:to-gray-400">
+            Pricing Plans
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Protect your investment with our comprehensive property verification services.
+            Choose the plan that best suits your needs.
+          </p>
+        </div>
 
-        <div className="row mb-5">
-          <div className="col-lg-8 mx-auto text-center">
-            <p className="lead">
-              Protect your investment with our comprehensive property verification services.
-              Choose the plan that best suits your needs.
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center max-w-6xl mx-auto mb-20">
+          
+          {/* Basic Verification */}
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div className="h-full bg-white dark:bg-gray-900 border border-amber-200 dark:border-amber-200 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-300 text-center p-8 flex flex-col pt-12 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100 dark:bg-amber-100 dark:bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+              
+              <h5 className="text-xl font-bold text-gray-600 dark:text-gray-400 mb-4 uppercase tracking-widest relative z-10">Basic Verification</h5>
+              <h3 className="text-4xl font-extrabold text-brand-dark dark:text-white mb-8 relative z-10">
+                ₹{pricing.basic.toLocaleString()}
+              </h3>
+              
+              <ul className="mb-10 space-y-4 text-left relative z-10 flex-grow">
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Khasra-Khata Check</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Basic Document Verification</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Ownership Status</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Report within 3 days</span></li>
+              </ul>
+              
+              <button
+                className="w-full border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white dark:border-amber-300 dark:border-white/20 dark:text-white dark:hover:bg-white dark:hover:text-brand-dark px-6 py-4 font-bold transition-all relative z-10"
+                onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
+              >
+                Choose Plan
+              </button>
+            </div>
+          </div>
+
+          {/* Complete Verification (Featured) */}
+          <div data-aos="fade-up" data-aos-delay="200" className="transform md:-translate-y-4 z-10">
+            <div className="h-full bg-gradient-to-br from-brand-dark to-brand-accent text-gray-900 dark:text-white shadow-2xl p-8 flex flex-col pt-12 relative overflow-hidden border-2 border-brand-accent/50">
+              <div className="absolute top-4 right-4 bg-brand-accent text-brand-dark text-xs font-black uppercase tracking-wider py-1 px-3 shadow-md transform rotate-3">
+                Most Popular
+              </div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-100 dark:bg-white/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+              
+              <h5 className="text-xl font-bold text-white/80 mb-4 uppercase tracking-widest relative z-10">Complete Verification</h5>
+              <h3 className="text-5xl font-extrabold text-brand-accent mb-8 relative z-10">
+                ₹{pricing.complete.toLocaleString()}
+              </h3>
+              
+              <ul className="mb-10 space-y-4 text-left relative z-10 flex-grow">
+                <li className="flex items-start gap-3"><i className="fas fa-check text-brand-accent mt-1"></i> <span className="text-white/90">All Basic features</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-brand-accent mt-1"></i> <span className="text-white/90">GDA Master Plan Check</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-brand-accent mt-1"></i> <span className="text-white/90">Circle Rate Information</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-brand-accent mt-1"></i> <span className="text-white/90">Land Demarcation Details</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-brand-accent mt-1"></i> <span className="text-white/90 font-bold">Report within 2 days</span></li>
+              </ul>
+              
+              <button
+                className="w-full bg-brand-accent text-brand-dark hover:bg-yellow-400 px-6 py-4 font-extrabold shadow-lg shadow-brand-accent/30 transition-all relative z-10"
+                onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
+              >
+                Choose Plan
+              </button>
+            </div>
+          </div>
+
+          {/* Premium Service */}
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div className="h-full bg-white dark:bg-gray-900 border border-amber-200 dark:border-amber-200 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-300 text-center p-8 flex flex-col pt-12 relative overflow-hidden group">
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-amber-100 dark:bg-amber-100 dark:bg-white/5 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+              
+              <h5 className="text-xl font-bold text-gray-600 dark:text-gray-400 mb-4 uppercase tracking-widest relative z-10">Premium Service</h5>
+              <h3 className="text-4xl font-extrabold text-brand-dark dark:text-white mb-8 relative z-10">
+                ₹{pricing.premium.toLocaleString()}
+              </h3>
+              
+              <ul className="mb-10 space-y-4 text-left relative z-10 flex-grow">
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">All Complete features</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-600 dark:text-gray-300 font-bold text-brand-dark dark:text-brand-accent">Physical Site Visit</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Legal Consultation</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-300">Market Analysis Report</span></li>
+                <li className="flex items-start gap-3"><i className="fas fa-check text-green-500 mt-1"></i> <span className="text-gray-700 dark:text-gray-600 dark:text-gray-300 font-bold text-brand-dark dark:text-brand-accent">Same day report</span></li>
+              </ul>
+              
+              <button
+                className="w-full border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white dark:border-amber-300 dark:border-white/20 dark:text-white dark:hover:bg-white dark:hover:text-brand-dark px-6 py-4 font-bold transition-all relative z-10"
+                onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
+              >
+                Choose Plan
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Special Offer */}
+        <div data-aos="zoom-in">
+          <div className="max-w-4xl mx-auto bg-brand-accent text-brand-dark p-10 text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 opacity-10 blur-xl">
+              <i className="fas fa-tags text-[200px]"></i>
+            </div>
+            <div className="relative z-10">
+              <h4 className="text-3xl font-extrabold mb-4 flex items-center justify-center gap-3">
+                <i className="fas fa-gift"></i> Special Offer for Bihar Residents
+              </h4>
+              <p className="text-lg font-medium mb-6 max-w-2xl mx-auto text-brand-dark/80">
+                Get <strong className="text-xl">20% discount</strong> on any verification package. We understand the challenges
+                faced by people from Bihar when buying property in Gorakhpur.
+              </p>
+              <div className="inline-block bg-white border-2 border-dashed border-gray-300 px-8 py-3 text-2xl font-black text-brand-dark tracking-widest shadow-inner">
+                BIHAR20
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="row g-4 justify-content-center">
-          <div className="col-lg-4">
-            <div className="card pricing-card h-100 shadow-custom text-center">
-              <div className="card-body p-4">
-                <h5 className="card-title">Basic Verification</h5>
-                <h3 className="text-primary fw-bold mb-4">₹{pricing.basic.toLocaleString()}</h3>
-                <ul className="list-unstyled mb-4">
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Khasra-Khata Check</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Basic Document Verification</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Ownership Status</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Report within 3 days</li>
-                </ul>
-                <button
-                  className="btn btn-outline-primary w-100"
-                  onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
-                >
-                  Choose Plan
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4">
-            <div className="card pricing-card featured h-100 shadow-custom text-center">
-              <div className="card-body p-4">
-                <h5 className="card-title">Complete Verification</h5>
-                <h3 className="text-primary fw-bold mb-4">₹{pricing.complete.toLocaleString()}</h3>
-                <ul className="list-unstyled mb-4">
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> All Basic features</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> GDA Master Plan Check</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Circle Rate Information</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Land Demarcation Details</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Report within 2 days</li>
-                </ul>
-                <button
-                  className="btn btn-primary w-100"
-                  onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
-                >
-                  Choose Plan
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4">
-            <div className="card pricing-card h-100 shadow-custom text-center">
-              <div className="card-body p-4">
-                <h5 className="card-title">Premium Service</h5>
-                <h3 className="text-primary fw-bold mb-4">₹{pricing.premium.toLocaleString()}</h3>
-                <ul className="list-unstyled mb-4">
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> All Complete features</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Physical Site Visit</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Legal Consultation</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Market Analysis Report</li>
-                  <li className="mb-2"><i className="fas fa-check text-success me-2"></i> Same day report</li>
-                </ul>
-                <button
-                  className="btn btn-outline-primary w-100"
-                  onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
-                >
-                  Choose Plan
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="row mt-5">
-          <div className="col-lg-8 mx-auto">
-            <div className="card bg-warning shadow-custom">
-              <div className="card-body p-4 text-center">
-                <h4 className="mb-3">Special Offer for Bihar Residents</h4>
-                <p className="mb-3">
-                  Get 20% discount on any verification package. We understand the challenges
-                  faced by people from Bihar when buying property in Gorakhpur.
-                </p>
-                <p className="mb-0">
-                  <strong>Use Code: BIHAR20</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

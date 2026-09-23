@@ -23,7 +23,7 @@ const Loader = () => {
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #030712 0%, #0a192f 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,11 +35,12 @@ const Loader = () => {
           .loader-ring {
             width: 80px;
             height: 80px;
-            border: 8px solid rgba(255, 255, 255, 0.2);
-            border-top: 8px solid #ffc107;
+            border: 8px solid rgba(255, 255, 255, 0.05);
+            border-top: 8px solid #f59e0b;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
           }
           .loader-dots {
             display: flex;
@@ -50,9 +51,10 @@ const Loader = () => {
           .loader-dot {
             width: 12px;
             height: 12px;
-            background: #ffc107;
+            background: #f59e0b;
             border-radius: 50%;
             animation: bounce 1.4s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
           }
           .loader-dot:nth-child(1) { animation-delay: -0.32s; }
           .loader-dot:nth-child(2) { animation-delay: -0.16s; }
