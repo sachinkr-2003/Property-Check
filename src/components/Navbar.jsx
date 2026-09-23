@@ -66,8 +66,9 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <div className="flex items-center ml-auto gap-4">
-              <button 
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-end md:ml-auto gap-4 mt-8 md:mt-0">
+              <div className="flex items-center gap-4 w-full md:w-auto justify-center">
+                <button 
                 onClick={() => setIsDarkMode(!isDarkMode)} 
                 className="w-9 h-9 rounded-full flex items-center justify-center bg-amber-100 dark:bg-white/5 border border-amber-200 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-accent hover:border-brand-accent/50 hover:scale-110 transition-all duration-300"
                 aria-label="Toggle Dark Mode"
@@ -81,6 +82,7 @@ const Navbar = () => {
               <Link to="/verify" className="bg-brand-accent text-white dark:text-[#0a0f1e] hover:bg-yellow-400 transition-all duration-300 font-black text-xs uppercase tracking-widest px-5 py-2.5 text-center rounded-full shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]">
                 Verify Now
               </Link>
+              </div>
             </div>
           </div>
 

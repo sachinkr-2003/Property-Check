@@ -15,6 +15,7 @@ const AdminDashboard = ({ onLogout }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // State for different views
   const [viewMode, setViewMode] = useState('list');
@@ -92,12 +93,21 @@ const AdminDashboard = ({ onLogout }) => {
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-950 font-sans text-gray-900 dark:text-gray-100">
       
-      {/* Sidebar - Remains mostly unchanged but assumes component manages its own Tailwind */}
-      <div className="flex-shrink-0 z-10">
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden animate-[fadeIn_0.2s_ease-out]" 
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
+
+      {/* Sidebar Area */}
+      <div className={`fixed inset-y-0 left-0 z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-300 ease-in-out flex-shrink-0`}>
         <AdminSidebar
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
+          setActiveTab={(tab) => { setActiveTab(tab); setIsSidebarOpen(false); }}
           onLogout={onLogout}
+          onClose={() => setIsSidebarOpen(false)}
         />
       </div>
 
@@ -106,8 +116,14 @@ const AdminDashboard = ({ onLogout }) => {
         
         {/* Top Navbar */}
         <header className="h-16 flex items-center justify-between px-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-          <div className="flex items-center gap-4">
-            <h2 className="text-lg font-bold uppercase tracking-widest text-gray-900 dark:text-white m-0">
+          <div className="flex items-center gap-3">
+            <button 
+              className="md:hidden text-gray-500 hover:text-brand-dark dark:hover:text-white dark:text-gray-400 p-2 border-r border-gray-200 dark:border-gray-800 pr-4 rounded-none transition-colors"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <i className="fas fa-bars text-lg"></i>
+            </button>
+            <h2 className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-900 dark:text-white m-0 truncate">
               {activeTab.replace('-', ' ')}
             </h2>
           </div>

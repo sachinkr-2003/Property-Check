@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminSidebar = ({ activeTab, setActiveTab, onLogout }) => {
+const AdminSidebar = ({ activeTab, setActiveTab, onLogout, onClose }) => {
     const menuItems = [
         { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-tachometer-alt' },
         { id: 'property-requests', label: 'Property Requests', icon: 'fas fa-file-contract' },
@@ -14,11 +14,21 @@ const AdminSidebar = ({ activeTab, setActiveTab, onLogout }) => {
 
     return (
         <div className="w-64 shrink-0 bg-brand-dark border-r border-gray-800 flex flex-col h-screen sticky top-0 text-gray-300 font-sans shadow-lg">
-            <div className="py-4 px-6 border-b border-gray-800 text-center flex-shrink-0 bg-black/20">
-                <div className="w-10 h-10 bg-white rounded-none mx-auto flex items-center justify-center mb-2 shadow-sm">
-                    <i className="fas fa-shield-alt text-brand-dark text-lg"></i>
+            <div className="py-4 px-6 border-b border-gray-800 text-center flex-shrink-0 bg-black/20 flex items-center justify-between md:block relative">
+                <div className="flex-1 flex flex-col items-center">
+                    <div className="w-10 h-10 bg-white rounded-none mx-auto flex items-center justify-center mb-2 shadow-sm">
+                        <i className="fas fa-shield-alt text-brand-dark text-lg"></i>
+                    </div>
+                    <h1 className="text-white font-bold tracking-widest text-[14px] m-0 uppercase flex-1">GPC Admin</h1>
                 </div>
-                <h1 className="text-white font-bold tracking-widest text-[14px] m-0 uppercase">GPC Admin</h1>
+                {onClose && (
+                    <button 
+                        onClick={onClose} 
+                        className="md:hidden text-gray-400 hover:text-white absolute right-4 top-4 p-2 transition-colors"
+                    >
+                        <i className="fas fa-times text-lg"></i>
+                    </button>
+                )}
             </div>
 
             <nav className="flex-1 overflow-y-auto hide-scroll py-3">
